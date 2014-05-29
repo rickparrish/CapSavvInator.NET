@@ -1,4 +1,5 @@
-﻿using CapSavvy.Data;
+﻿using CapSavvInator.Models;
+using CapSavvy.Data;
 using CapSavvy.Modules;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,10 @@ namespace CapSavvInator.Controllers
         private mod_base usageInfo;
 
         [HttpPost]
-        public UsageData GetUsage([FromBody]string id)
+        public ApiResult GetUsage([FromBody]string id)
         {
+            ApiResult Result = new ApiResult(usage);
+
             // Define the modules, order counts! If one does't match it falls through to the next, teksavvy is the catchall.
             loadedModules = new mod_base[] {
                 new mod_ebox_res_dsl(usage),
@@ -40,28 +43,29 @@ namespace CapSavvInator.Controllers
                 switch (usageInfo.Error)
                 {
                     case mod_base.ErrorState.HTTP:
-                        usage.ISP = usageInfo.moduleName + " (HTTP Error)";
+                        Result.ISP = usageInfo.moduleName + " (HTTP Error)";
                         break;
                     case mod_base.ErrorState.Match:
-                        usage.ISP = usageInfo.moduleName + " (Parse Error)";
+                        Result.ISP = usageInfo.moduleName + " (Parse Error)";
                         break;
                     case mod_base.ErrorState.OK:
-                        usage.ISP = usageInfo.moduleName;
+                        Result.ISP = usageInfo.moduleName;
+                        Result.Success = true;
                         break;
                     case mod_base.ErrorState.Startup:
-                        usage.ISP = usageInfo.moduleName + " (Error)";
+                        Result.ISP = usageInfo.moduleName + " (Error)";
                         break;
                     case mod_base.ErrorState.Username:
-                        usage.ISP = "Invalid Username / API Key";
+                        Result.ISP = "Invalid Username / API Key";
                         break;
                 }
             }
             else
             {
-                usage.ISP = "Invalid Username / API Key";
+                Result.ISP = "Invalid Username / API Key";
             }
 
-            return usage;
+            return Result;
         }
 
         private bool ValidateUsername(string id)

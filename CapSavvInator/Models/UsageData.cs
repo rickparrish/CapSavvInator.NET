@@ -26,14 +26,12 @@ namespace CapSavvy.Data
         public UsageDataDetails Peak { get; set; }
         public UsageDataDetails OffPeak { get; set; }
         public UsageDataDetails All { get; set; }
-        public string ISP { get; set; }
 
         public UsageData()
         {
             Peak = new UsageDataDetails();
             OffPeak = new UsageDataDetails();
             All = new UsageDataDetails();
-            ISP = "Invalid Username / API Key";
         }
     }
 }

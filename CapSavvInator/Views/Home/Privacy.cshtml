@@ -6,8 +6,39 @@
     <h1>Privacy</h1>
 </div>
 
-<p>I'm sure you want to know how safe your Username / API key are if you enter them on this site.  And I'm here to tell you, they should be pretty safe.</p>
-<p>This site uses <a href="http://en.wikipedia.org/wiki/Web_storage" target="_blank">Web Storage</a> to store your information, which is browser based storage that this site has absolutely no access to.  So I have no way of knowing what your Username / API Key are.*</p>
-<p>To request the usage information from your ISP, a secure HTTPS request is made between your browser and your ISPs server.  This site serves up the html/css/js that tells your browser how to request the usage information, and then how to parse it, but it is not involved in making the connection in any way (so none of your data passes through my server).</p>
-<p>&nbsp;</p>
-<p class="small">* In theory I could add code to the site that causes your Username / API Key to be sent to this site.  I have no interest in doing that, but if it worries you that I could, then you always have the option of cloning this site, auditing the code, and setting it up on your own web server.  I'll be putting the site up on GitHub in the near future to make this cloning process easier.</p>
+<p>
+    I'm sure you want to know how safe your Username / API key are if you enter them on this site.  
+    And I'm here to tell you, they should be relatively safe, but could be safer.
+</p>
+<p>
+    When you enter your Username / API Key and click the Save button, your information is saved using
+    <a href="http://en.wikipedia.org/wiki/Web_storage" target="_blank">Web Storage</a>, which is browser based storage, so
+    your information is stored on your own PC/tablet/phone/whatever.
+</p>
+<p>
+    My original plan was to then have the Username / API Key sent directly from your browser to your ISPs server, but
+    unfortunately something known as Cross-Origin Resource Sharing (CORS) makes this impossible without each ISP making a
+    change on their end.
+</p>
+<p>
+    So instead your Username / API Key is sent to this website, and the server powering the website makes the request
+    to your ISPs server.  This avoids the CORS problem, and allows your usage data to be retrieved.
+</p>
+<p>
+    So why did I say your information could be safer?  Well it's for two reasons:
+    <ol>
+        <li>
+            I haven't acquired an SSL certificate for this domain yet, so when your browser sends your information
+            to this website, it's sent over a plain-old unencrypted HTTP connection.  This will be remedied in the near future,
+            and at that point the connection between your browser and this website will be encrypted (so only the NSA will
+            know what your Username / API Key are, but not anybody else that happens to sniff the traffic!)
+        </li>
+        <li>
+            Something not as easy to remedy is the fact that you need to trust that I'm not logging your Username / API Key
+            when you send it to this website.  I can tell you right now I'm not, but will you believe me?  CapSavvy is
+            GPL, and so CapSavvInator will be too, so you won't need to trust me if you don't want to.  Once I have the project
+            up on GitHub I'll link to it, and you'll be able to clone this site and setup your own site and be 100% sure
+            that it's doing what you want it to do.
+        </li>
+    </ol>
+</p>
