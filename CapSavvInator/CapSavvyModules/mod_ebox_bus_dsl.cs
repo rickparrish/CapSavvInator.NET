@@ -19,21 +19,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
-namespace CapSavvy.Data
-{
-    public class UsageData
-    {
-        public UsageDataDetails Peak { get; set; }
-        public UsageDataDetails OffPeak { get; set; }
-        public UsageDataDetails All { get; set; }
-        public string ISP { get; set; }
+using System;
+using System.Text.RegularExpressions;
+using CapSavvy.Data;
 
-        public UsageData()
+namespace CapSavvy.Modules
+{
+    class mod_ebox_bus_dsl : mod_ebox_res_dsl
+    {
+        public mod_ebox_bus_dsl(UsageData usageData) : base(usageData) { } // Call base constructor
+
+        public override string moduleName
         {
-            Peak = new UsageDataDetails();
-            OffPeak = new UsageDataDetails();
-            All = new UsageDataDetails();
-            ISP = "Invalid Username / API Key";
+            get { return "Electronicbox Business DSL"; }
+        }
+
+        public override string validUsernameRegex
+        {
+            get { return @"^[a-z0-9_\-\.]{3,}@ebox-business\.com$"; }
+        }
+
+        public override bool supportsOffPeak
+        {
+            get { return true; }
         }
     }
 }

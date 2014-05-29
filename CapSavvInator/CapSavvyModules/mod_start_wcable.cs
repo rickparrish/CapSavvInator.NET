@@ -19,21 +19,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 */
 
-namespace CapSavvy.Data
-{
-    public class UsageData
-    {
-        public UsageDataDetails Peak { get; set; }
-        public UsageDataDetails OffPeak { get; set; }
-        public UsageDataDetails All { get; set; }
-        public string ISP { get; set; }
+using System;
+using System.Text.RegularExpressions;
+using CapSavvy.Data;
 
-        public UsageData()
+namespace CapSavvy.Modules
+{
+    class mod_start_wcable : mod_start_fdsl
+    {
+        public mod_start_wcable(UsageData usageData) : base(usageData) { } // Call base constructor
+
+        public override string moduleName
         {
-            Peak = new UsageDataDetails();
-            OffPeak = new UsageDataDetails();
-            All = new UsageDataDetails();
-            ISP = "Invalid Username / API Key";
+            get { return "Start Wholesale Cable"; }
+        }
+
+        public override string validUsernameRegex
+        {
+            get { return @"^[A-Z0-9]{7}[A-F0-9]{11}C@(logins\.ca)$"; }
         }
     }
 }
