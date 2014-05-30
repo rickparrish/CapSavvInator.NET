@@ -2,10 +2,6 @@
     ViewBag.Title = "Home";
 }
 
-<div class="page-header">
-    <h1>CapSavvInator</h1>
-</div>
-
 <div class="enter-api-key col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
     <div class="form-group">
         <label class="control-label">Your Username / API Key</label>
@@ -25,61 +21,35 @@
 <div id="pnlUsageData" style="display: none;">
     <table class="table table-striped table-hover">
         <tr>
-            <th>Measurement</th>
-            <th>Current (GB)</th>
-            <th>Predicted (GB)</th>
+            <th>Direction</th>
+            <th>Peak <br class="visible-xs" />(Est'd)</th>
+            <th>Off-Peak <br class="visible-xs" />(Est'd)</th>
+            <th>Total <br class="visible-xs" />(Est'd)</th>
         </tr>
         <tr>
-            <td>Peak Download</td>
-            <td id="PeakDownload">...</td>
-            <td id="PeakDownloadPredicted">...</td>
+            <td>Download</td>
+            <td><span id="PeakDownload">...</span> <br class="visible-xs" />(<span id="PeakDownloadPredicted">...</span>)</td>
+            <td><span id="OffPeakDownload">...</span> <br class="visible-xs" />(<span id="OffPeakDownloadPredicted">...</span>)</td>
+            <td><span id="AllDownload">...</span> <br class="visible-xs" />(<span id="AllDownloadPredicted">...</span>)</td>
         </tr>
         <tr>
-            <td>Peak Upload</td>
-            <td id="PeakUpload">...</td>
-            <td id="PeakUploadPredicted">...</td>
+            <td>Upload</td>
+            <td><span id="PeakUpload">...</span> <br class="visible-xs" />(<span id="PeakUploadPredicted">...</span>)</td>
+            <td><span id="OffPeakUpload">...</span> <br class="visible-xs" />(<span id="OffPeakUploadPredicted">...</span>)</td>
+            <td><span id="AllUpload">...</span> <br class="visible-xs" />(<span id="AllUploadPredicted">...</span>)</td>
         </tr>
         <tr>
-            <td>Peak Total</td>
-            <td id="PeakTotal">...</td>
-            <td id="PeakTotalPredicted">...</td>
-        </tr>
-        <tr>
-            <td>Off-peak Download</td>
-            <td id="OffPeakDownload">...</td>
-            <td id="OffPeakDownloadPredicted">...</td>
-        </tr>
-        <tr>
-            <td>Off-peak Upload</td>
-            <td id="OffPeakUpload">...</td>
-            <td id="OffPeakUploadPredicted">...</td>
-        </tr>
-        <tr>
-            <td>Off-peak Total</td>
-            <td id="OffPeakTotal">...</td>
-            <td id="OffPeakTotalPredicted">...</td>
-        </tr>
-        <tr>
-            <td>All Download</td>
-            <td id="AllDownload">...</td>
-            <td id="AllDownloadPredicted">...</td>
-        </tr>
-        <tr>
-            <td>All Upload</td>
-            <td id="AllUpload">...</td>
-            <td id="AllUploadPredicted">...</td>
-        </tr>
-        <tr>
-            <td>All Total</td>
-            <td id="AllTotal">...</td>
-            <td id="AllTotalPredicted">...</td>
+            <td>Combined</td>
+            <td><span id="PeakTotal">...</span> <br class="visible-xs" /><br class="visible-xs" />(<span id="PeakTotalPredicted">...</span>)</td>
+            <td><span id="OffPeakTotal">...</span> <br class="visible-xs" />(<span id="OffPeakTotalPredicted">...</span>)</td>
+            <td><span id="AllTotal">...</span> <br class="visible-xs" />(<span id="AllTotalPredicted">...</span>)</td>
         </tr>
     </table>
 </div>
 
 @section scripts {
     <script>
-        var CapSavvyUrl = '@Url.Action("CapSavvy")';
+        var ApiUrl = '@Url.Content("~/api/capsavvy")';
     </script>
     <script src="@Url.Content("~/Scripts/site.js")"></script>
 }

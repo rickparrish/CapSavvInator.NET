@@ -11,11 +11,8 @@ $('#cmdSaveAPIKey').click(function () {
 });
 
 function RefreshUsage() {
-    // TODO This should be supplied with @Url.Action or something
-    var uri = 'api/capsavvy';
-
     // Send an AJAX request
-    $.post(uri, { '': localStorage.APIKey }, null, 'json')
+    $.post(ApiUrl, { '': localStorage.APIKey }, null, 'json')
         .done(function (data) {
             $('#lblISP').text(data.ISP);
             $('#PeakDownload').text(parseFloat(data.Usage.Peak.Down).toFixed(2));
