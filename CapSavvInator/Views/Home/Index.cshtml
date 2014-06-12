@@ -3,6 +3,8 @@
 }
 
 <div class="enter-api-key col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+    <p>&nbsp;</p>
+
     <div class="form-group">
         <label class="control-label">Your Username / API Key</label>
         <div class="input-group">
@@ -11,14 +13,34 @@
                 <button class="btn btn-default" type="button" id="cmdSaveAPIKey">Save</button>
             </span>
         </div>
-        <span id="lblISP"></span>
+        ISP: <span id="lblISP">Unknown</span>
         @Html.ActionLink("Is this safe?", "Privacy", "Home", null, new { @class = "pull-right" })
+    </div>
+
+    <p>&nbsp;</p>
+
+    <div id="pnlLoadingData" class="panel panel-info" style="display: block;">
+        <div class="panel-heading">Requesting usage information from your ISP...</div>
+        <div class="panel-body text-center">
+            <br />
+            <img src="@Url.Content("~/Content/Loading.gif")" alt="Loading" /><br />
+            <br />
+        </div>
+    </div>
+
+    <div id="pnlNoData" class="panel panel-danger" style="display: block;">
+        <div class="panel-heading">No data to display!</div>
+        <div class="panel-body">
+            <p>Sorry, I don't have any data to display for you.</p>
+            <p>Please double check your Username / API Key and try again.</p>
+            <p>If it still doesn't work, feel free to @Html.ActionLink("contact me", "Contact").</p>
+        </div>
     </div>
 </div>
 
-<p class="clearfix"></p>
+<div class="clearfix"></div>
 
-<div id="pnlUsageData" style="display: none;">
+<div id="pnlUsageData" style="display: block;">
     <table class="table table-striped table-hover">
         <tr>
             <th>Direction</th>

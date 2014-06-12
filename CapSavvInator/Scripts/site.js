@@ -11,6 +11,11 @@ $('#cmdSaveAPIKey').click(function () {
 });
 
 function RefreshUsage() {
+    // Display loading animation
+    $('#pnlNoData').hide('fast');
+    $('#pnlUsageData').hide('fast');
+    $('#pnlLoadingData').show('fast');
+
     // Send an AJAX request
     $.post(ApiUrl, { '': localStorage.APIKey }, null, 'json')
         .done(function (data) {
@@ -35,13 +40,16 @@ function RefreshUsage() {
             $('#AllTotalPredicted').text(parseFloat(data.Usage.All.TotalPredicted).toFixed(2));
 
             if (data.Success) {
+                $('#pnlLoadingData').hide('slow');
                 $('#pnlUsageData').show('slow');
             } else {
-                $('#pnlUsageData').hide('slow');
+                $('#pnlLoadingData').hide('slow');
+                $('#pnlNoData').show('slow');
             }
         })
         .fail(function () {
             $('#lblISP').text('');
-            $('#pnlUsageData').hide('slow');
+            $('#pnlLoadingData').hide('slow');
+            $('#pnlNoData').show('slow');
         });
 }
