@@ -1,44 +1,39 @@
 ﻿@{
-    ViewBag.Title = "Privacy";
+    ViewBag.Title = "Privacy & Security";
 }
 
 <div class="page-header">
-    <h1>Privacy</h1>
+    <h1>@ViewBag.Title</h1>
 </div>
 
 <p>
-    I'm sure you want to know how safe your Username / API key are if you enter them on this site.  
-    And I'm here to tell you, they should be relatively safe, but could be safer.
+    I'm sure you want to know how safe your Username / API key are if you enter them on this site.
+    And I'm here to tell you, they should be relatively safe, especially if you're accessing via
+    the HTTPS link: <a href="https://csi.randm.ca/">https://csi.randm.ca</a>.
 </p>
 <p>
     When you enter your Username / API Key and click the Save button, your information is saved using
-    <a href="http://en.wikipedia.org/wiki/Web_storage" target="_blank">Web Storage</a>, which is browser based storage, so
-    your information is stored on your own PC/tablet/phone/whatever.
+    <a href="http://en.wikipedia.org/wiki/Web_storage" target="_blank">Web Storage</a>, which is browser based 
+    storage, so your information is stored on your own PC/tablet/phone/whatever and not on this web server.  
+    This is so when you come back to the site again, you won't have to re-enter your Username / API Key 
+    (at least not on the same device -- if you come back from a different device then you'll need to re-enter it).
 </p>
 <p>
-    My original plan was to then have the Username / API Key sent directly from your browser to your ISPs server, but
-    unfortunately something known as Cross-Origin Resource Sharing (CORS) makes this impossible without each ISP making a
-    change on their end.
+    After the Username / API Key is saved to your browser's Web Storage area, it is then submitted to this
+    web server by your browser.  This submission will use the same protocol that you accessed the site by
+    (which in your case, means it will be sent
+    @Html.Raw(Request.IsSecureConnection ? "<span class=\"text-success\">ENCRYPTED</span>" : "<span class=\"text-danger\">UNENCRYPTED</span>")).
 </p>
 <p>
-    So instead your Username / API Key is sent to this website, and the server powering the website makes the request
-    to your ISPs server.  This avoids the CORS problem, and allows your usage data to be retrieved.
+    This web server will then securely transmit your Username / API Key to your ISP's web server, which will
+    reply back with your usage information.  This web server will then manipulate your usage information 
+    (ie calculate predicated values) and display it all to you in your browser.
 </p>
 <p>
-    So why did I say your information could be safer?  Well it's for two reasons:
-    <ol>
-        <li>
-            I haven't acquired an SSL certificate for this domain yet, so when your browser sends your information
-            to this website, it's sent over a plain-old unencrypted HTTP connection.  This will be remedied in the near future,
-            and at that point the connection between your browser and this website will be encrypted (so only the NSA will
-            know what your Username / API Key are!)
-        </li>
-        <li>
-            Something not as easy to remedy is the fact that you need to trust that I'm not logging your Username / API Key
-            when you send it to this website.  I can tell you right now I'm not, but will you believe me?  CapSavvy is
-            GPL, and so CapSavvInator will be too, so you won't need to trust me if you don't want to.  Once I have the project
-            up on GitHub I'll link to it, and you'll be able to clone this site and setup your own site and be 100% sure
-            that it's doing what you want it to do.
-        </li>
-    </ol>
+    Your Username / API Key is not stored on this web server in any form at this time.  This may be subject to change
+    in the future though.  For example it might be cool to have a "leaderboard" to see which users and/or which
+    ISPs have the highest data usage totals.  <strong>IF</strong> something like this is ever put in place, it will
+    be with advance notice, it will be <strong>OPT-IN</strong>, and most importantly, it will not be stored in a
+    personally identifiable way (this means salting+hashing your Username / API Key so even if the web server's database
+    is hacked, nobody will be able to retrieve your original Username / API Key from it).
 </p>
