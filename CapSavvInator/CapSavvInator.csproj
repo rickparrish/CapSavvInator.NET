@@ -128,27 +128,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="CapSavvyModules\mod_base.cs" />
-    <Compile Include="CapSavvyModules\mod_caneris_dsl.cs" />
-    <Compile Include="CapSavvyModules\mod_default.cs" />
-    <Compile Include="CapSavvyModules\mod_ebox_bus_dsl.cs" />
-    <Compile Include="CapSavvyModules\mod_ebox_res_dsl.cs" />
-    <Compile Include="CapSavvyModules\mod_start_fcable.cs" />
-    <Compile Include="CapSavvyModules\mod_start_fdsl.cs" />
-    <Compile Include="CapSavvyModules\mod_start_fwireless.cs" />
-    <Compile Include="CapSavvyModules\mod_start_wcable.cs" />
-    <Compile Include="CapSavvyModules\mod_start_wdsl.cs" />
-    <Compile Include="CapSavvyModules\mod_start_wwireless.cs" />
-    <Compile Include="CapSavvyModules\mod_teksavvy.cs" />
-    <Compile Include="CapSavvyModules\mod_videotron_tpia.cs" />
     <Compile Include="Controllers\CapSavvyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ApiResult.cs" />
-    <Compile Include="Models\UsageData.cs" />
-    <Compile Include="Models\UsageDataDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,7 +183,12 @@
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <Content Include="Views\Home\Privacy.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Programming\CapSavvy\CapSavvy\CapSavvy.csproj">
+      <Project>{b3b74896-54f0-44ad-acf3-0ead9731c5bc}</Project>
+      <Name>CapSavvy</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

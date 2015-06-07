@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapSavvInator", "CapSavvInator\CapSavvInator.csproj", "{829BDAEC-9ED2-4119-822C-48FA27112F79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapSavvy", "..\..\..\Programming\CapSavvy\CapSavvy\CapSavvy.csproj", "{B3B74896-54F0-44AD-ACF3-0EAD9731C5BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{829BDAEC-9ED2-4119-822C-48FA27112F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{829BDAEC-9ED2-4119-822C-48FA27112F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{829BDAEC-9ED2-4119-822C-48FA27112F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3B74896-54F0-44AD-ACF3-0EAD9731C5BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3B74896-54F0-44AD-ACF3-0EAD9731C5BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3B74896-54F0-44AD-ACF3-0EAD9731C5BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3B74896-54F0-44AD-ACF3-0EAD9731C5BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
