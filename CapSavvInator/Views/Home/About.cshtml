@@ -1,19 +1,19 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "About CapSavvInator";
 }
 
 <div class="page-header">
-    <h1>About</h1>
+    <h1>@ViewBag.Title</h1>
 </div>
 
 <p>
-    CapSavvInator is a modified version of <a href="http://www.dslreports.com/forum/r29128976-CapSavvy-v4.3-released-" target="_blank">CapSavvy</a>, 
+    CapSavvInator is a modified version of <a href="http://www.dslreports.com/forum/r29128976-CapSavvy-v4.3-released-" target="_blank">CapSavvy</a>,
     which is described by the author as "a tool that can retrieve your data transfer usage from most independent ISPs and display it in your system tray".
 </p>
 <p>
-    So basically I took the "meat" of CapSavvy, which are the modules that request and parse data from the various ISPs, and
-    placed that into the website you're looking at right now.  In other words, the author of CapSavvy did all the hard work, and 
-    I'm just displaying the data in a different way (on this website, instead of in your system tray).
+    The main purpose of this tool is to provide easy access to your actual and predicted usage data from mobile devices, since they currently don't have
+    anything like CapSavvy available (EDIT: There are now some usage checkers available, but they're not available for all devices, and some actually
+    cost money even though they're based on code found in the free and open-source CapSavvy!)
 </p>
 <p>
     ISPs currently supported by CapSavvy (and hence CapSavvInator) are:
@@ -26,9 +26,5 @@
     </ul>
 </p>
 <p>
-    Unfortunately I won't be able to use something like Phonegap to turn this into a native app for mobile devices like I was
-    originally hoping to (due to the Cross-Origin Resource Sharing problem I mentioned on the Privacy page), but that doesn't
-    mean you can't use this site on your mobile devices anyway.  Just bookmark the home page, and your usage will come up
-    every time you load it.  Most mobile devices let you bookmark to your app menu / start screen / whatever, so you can
-    probably even access it just as easily as you could a native app.
+    <a href="https://github.com/rickparrish/CapSavvInator" target="_blank">Check out the source on GitHub!</a>
 </p>

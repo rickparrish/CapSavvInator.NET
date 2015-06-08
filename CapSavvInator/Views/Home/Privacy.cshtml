@@ -7,33 +7,20 @@
 </div>
 
 <p>
-    I'm sure you want to know how safe your Username / API key are if you enter them on this site.
-    And I'm here to tell you, they should be relatively safe, especially if you're accessing via
-    the HTTPS link: <a href="https://csi.randm.ca/">https://csi.randm.ca</a>.
-</p>
-<p>
+    I take the privacy of your Username / API Key very seriously, which is why it is not stored on this web server.
     When you enter your Username / API Key and click the Save button, your information is saved using
-    <a href="http://en.wikipedia.org/wiki/Web_storage" target="_blank">Web Storage</a>, which is browser based 
-    storage, so your information is stored on your own PC/tablet/phone/whatever and not on this web server.  
-    This is so when you come back to the site again, you won't have to re-enter your Username / API Key 
+    <a target="_blank" href="http://en.wikipedia.org/wiki/Web_storage">Web Storage</a>, which is browser based
+    storage, so your information is stored on your own PC/tablet/phone/whatever and not on this web server.
+    This is so when you come back to the site again, you won't have to re-enter your Username / API Key
     (at least not on the same device -- if you come back from a different device then you'll need to re-enter it).
 </p>
 <p>
     After the Username / API Key is saved to your browser's Web Storage area, it is then submitted to this
-    web server by your browser.  This submission will use the same protocol that you accessed the site by
-    (which in your case, means it will be sent
-    @Html.Raw(Request.IsSecureConnection ? "<span class=\"text-success\">ENCRYPTED</span>" : "<span class=\"text-danger\">UNENCRYPTED</span>")).
+    web server via HTTPS, which means it is encrypted and safe from snooping if you happen to be accessing
+    this site from a Tim Hortons or something like that.
 </p>
 <p>
     This web server will then securely transmit your Username / API Key to your ISP's web server, which will
-    reply back with your usage information.  This web server will then manipulate your usage information 
-    (ie calculate predicated values) and display it all to you in your browser.
-</p>
-<p>
-    Your Username / API Key is not stored on this web server in any form at this time.  This may be subject to change
-    in the future though.  For example it might be cool to have a "leaderboard" to see which users and/or which
-    ISPs have the highest data usage totals.  <strong>IF</strong> something like this is ever put in place, it will
-    be with advance notice, it will be <strong>OPT-IN</strong>, and most importantly, it will not be stored in a
-    personally identifiable way (this means salting+hashing your Username / API Key so even if the web server's database
-    is hacked, nobody will be able to retrieve your original Username / API Key from it).
+    reply back with your usage information.  This web server will then manipulate your usage information
+    (ie calculate average and predicted values) and display it all to you in your browser.
 </p>

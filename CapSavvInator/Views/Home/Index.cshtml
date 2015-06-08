@@ -40,32 +40,95 @@
 <div class="clearfix"></div>
 
 <div id="pnlUsageData" style="display: none;">
-    <table class="table table-striped table-hover">
-        <tr>
-            <th>Direction</th>
-            <th>Peak <br class="visible-xs" />(Est'd)</th>
-            <th>Off-Peak <br class="visible-xs" />(Est'd)</th>
-            <th>Total <br class="visible-xs" />(Est'd)</th>
-        </tr>
-        <tr>
-            <td>Download</td>
-            <td><span id="PeakDownload">...</span> <br class="visible-xs" />(<span id="PeakDownloadPredicted">...</span>)</td>
-            <td><span id="OffPeakDownload">...</span> <br class="visible-xs" />(<span id="OffPeakDownloadPredicted">...</span>)</td>
-            <td><span id="AllDownload">...</span> <br class="visible-xs" />(<span id="AllDownloadPredicted">...</span>)</td>
-        </tr>
-        <tr>
-            <td>Upload</td>
-            <td><span id="PeakUpload">...</span> <br class="visible-xs" />(<span id="PeakUploadPredicted">...</span>)</td>
-            <td><span id="OffPeakUpload">...</span> <br class="visible-xs" />(<span id="OffPeakUploadPredicted">...</span>)</td>
-            <td><span id="AllUpload">...</span> <br class="visible-xs" />(<span id="AllUploadPredicted">...</span>)</td>
-        </tr>
-        <tr>
-            <td>Combined</td>
-            <td><span id="PeakTotal">...</span> <br class="visible-xs" /><br class="visible-xs" />(<span id="PeakTotalPredicted">...</span>)</td>
-            <td><span id="OffPeakTotal">...</span> <br class="visible-xs" />(<span id="OffPeakTotalPredicted">...</span>)</td>
-            <td><span id="AllTotal">...</span> <br class="visible-xs" />(<span id="AllTotalPredicted">...</span>)</td>
-        </tr>
-    </table>
+    <div id="pnlPaid">
+        <h3>Paid Usage Period</h3>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th></th>
+                <th>Actual</th>
+                <th><span class="visible-xs">Avg</span><span class="hidden-xs">Average</span></th>
+                <th><span class="visible-xs">Est'd</span><span class="hidden-xs">Estimated</span></th>
+            </tr>
+            <tr class="Download">
+                <td><span class="visible-xs">Down</span><span class="hidden-xs">Download</span></td>
+                <td><span id="PeakDownload">...</span></td>
+                <td><span id="PeakDownloadAverage">...</span></td>
+                <td><span id="PeakDownloadPredicted">...</span></td>
+            </tr>
+            <tr class="Upload">
+                <td><span class="visible-xs">Up</span><span class="hidden-xs">Upload</span></td>
+                <td><span id="PeakUpload">...</span></td>
+                <td><span id="PeakUploadAverage">...</span></td>
+                <td><span id="PeakUploadPredicted">...</span></td>
+            </tr>
+            <tr class="Total">
+                <td>Total</td>
+                <td><span id="PeakTotal">...</span></td>
+                <td><span id="PeakTotalAverage">...</span></td>
+                <td><span id="PeakTotalPredicted">...</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="pnlFree">
+        <h3>Free Usage Period</h3>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th></th>
+                <th>Actual</th>
+                <th><span class="visible-xs">Avg</span><span class="hidden-xs">Average</span></th>
+                <th><span class="visible-xs">Est'd</span><span class="hidden-xs">Estimated</span></th>
+            </tr>
+            <tr class="Download">
+                <td><span class="visible-xs">Down</span><span class="hidden-xs">Download</span></td>
+                <td><span id="OffPeakDownload">...</span></td>
+                <td><span id="OffPeakDownloadAverage">...</span></td>
+                <td><span id="OffPeakDownloadPredicted">...</span></td>
+            </tr>
+            <tr class="Upload">
+                <td><span class="visible-xs">Up</span><span class="hidden-xs">Upload</span></td>
+                <td><span id="OffPeakUpload">...</span></td>
+                <td><span id="OffPeakUploadAverage">...</span></td>
+                <td><span id="OffPeakUploadPredicted">...</span></td>
+            </tr>
+            <tr class="Total">
+                <td>Total</td>
+                <td><span id="OffPeakTotal">...</span></td>
+                <td><span id="OffPeakTotalAverage">...</span></td>
+                <td><span id="OffPeakTotalPredicted">...</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="pnlAll">
+        <h3>All Usage</h3>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th></th>
+                <th>Actual</th>
+                <th><span class="visible-xs">Avg</span><span class="hidden-xs">Average</span></th>
+                <th><span class="visible-xs">Est'd</span><span class="hidden-xs">Estimated</span></th>
+            </tr>
+            <tr class="Download">
+                <td><span class="visible-xs">Down</span><span class="hidden-xs">Download</span></td>
+                <td><span id="AllDownload">...</span></td>
+                <td><span id="AllDownloadAverage">...</span></td>
+                <td><span id="AllDownloadPredicted">...</span></td>
+            </tr>
+            <tr class="Upload">
+                <td><span class="visible-xs">Up</span><span class="hidden-xs">Upload</span></td>
+                <td><span id="AllUpload">...</span></td>
+                <td><span id="AllUploadAverage">...</span></td>
+                <td><span id="AllUploadPredicted">...</span></td>
+            </tr>
+            <tr class="Total">
+                <td>Total</td>
+                <td><span id="AllTotal">...</span></td>
+                <td><span id="AllTotalAverage">...</span></td>
+                <td><span id="AllTotalPredicted">...</span></td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 @section scripts {

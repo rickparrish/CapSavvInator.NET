@@ -50,6 +50,8 @@ namespace CapSavvInator.Controllers
                         break;
                     case mod_base.ErrorState.OK:
                         Result.ISP = usageInfo.moduleName;
+                        Result.TracksOffPeak = usageInfo.supportsOffPeak;
+                        Result.TracksUploads = usageInfo.tracksUploads;
                         Result.Success = true;
                         break;
                     case mod_base.ErrorState.Startup:

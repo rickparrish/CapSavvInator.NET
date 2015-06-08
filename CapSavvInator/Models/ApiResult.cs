@@ -10,6 +10,8 @@ namespace CapSavvInator.Models
     {
         public string ISP { get; set; }
         public bool Success { get; set; }
+        public bool TracksOffPeak { get; set; }
+        public bool TracksUploads { get; set; }
         public UsageData Usage { get; set; }
 
         public ApiResult(UsageData usage)
