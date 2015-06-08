@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Caching;
 using System.Text.RegularExpressions;
+using System.Web.Caching;
 using System.Web.Http;
 
 namespace CapSavvInator.Controllers
@@ -20,10 +22,16 @@ namespace CapSavvInator.Controllers
         [HttpPost]
         public ApiResult GetUsage([FromBody]string id)
         {
-            ApiResult Result = new ApiResult(usage);
+            // Check the cache to see if we've made a request in the last 5 minutes
+            string CacheKey = "GetUsage-" + id;
+            ApiResult Result = (ApiResult)MemoryCache.Default.Get(CacheKey);
+            if (Result == null)
+            {
+                // Not in cache, so request data from server
+                Result = new ApiResult(usage);
 
-            // Define the modules, order counts! If one does't match it falls through to the next, teksavvy is the catchall.
-            loadedModules = new mod_base[] {
+                // Define the modules, order counts! If one does't match it falls through to the next, teksavvy is the catchall.
+                loadedModules = new mod_base[] {
                 new mod_ebox_res_dsl(usage),
                 new mod_ebox_bus_dsl(usage),
                 new mod_videotron_tpia(usage),
@@ -37,34 +45,38 @@ namespace CapSavvInator.Controllers
                 new mod_teksavvy(usage)
             };
 
-            if (ValidateUsername(id))
-            {
-                usageInfo.GetUsage();
-                switch (usageInfo.Error)
+                if (ValidateUsername(id))
                 {
-                    case mod_base.ErrorState.HTTP:
-                        Result.ISP = usageInfo.moduleName + " (HTTP Error)";
-                        break;
-                    case mod_base.ErrorState.Match:
-                        Result.ISP = usageInfo.moduleName + " (Parse Error)";
-                        break;
-                    case mod_base.ErrorState.OK:
-                        Result.ISP = usageInfo.moduleName;
-                        Result.TracksOffPeak = usageInfo.supportsOffPeak;
-                        Result.TracksUploads = usageInfo.tracksUploads;
-                        Result.Success = true;
-                        break;
-                    case mod_base.ErrorState.Startup:
-                        Result.ISP = usageInfo.moduleName + " (Error)";
-                        break;
-                    case mod_base.ErrorState.Username:
-                        Result.ISP = "Invalid Username / API Key";
-                        break;
+                    usageInfo.GetUsage();
+                    switch (usageInfo.Error)
+                    {
+                        case mod_base.ErrorState.HTTP:
+                            Result.ISP = usageInfo.moduleName + " (HTTP Error)";
+                            break;
+                        case mod_base.ErrorState.Match:
+                            Result.ISP = usageInfo.moduleName + " (Parse Error)";
+                            break;
+                        case mod_base.ErrorState.OK:
+                            Result.ISP = usageInfo.moduleName;
+                            Result.TracksOffPeak = usageInfo.supportsOffPeak;
+                            Result.TracksUploads = usageInfo.tracksUploads;
+                            Result.Success = true;
+                            break;
+                        case mod_base.ErrorState.Startup:
+                            Result.ISP = usageInfo.moduleName + " (Error)";
+                            break;
+                        case mod_base.ErrorState.Username:
+                            Result.ISP = "Invalid Username / API Key";
+                            break;
+                    }
                 }
-            }
-            else
-            {
-                Result.ISP = "Invalid Username / API Key";
+                else
+                {
+                    Result.ISP = "Invalid Username / API Key";
+                }
+
+                // Add to cache for 5 minutes
+                MemoryCache.Default.Add(CacheKey, Result, DateTimeOffset.UtcNow.AddMinutes(5));
             }
 
             return Result;
